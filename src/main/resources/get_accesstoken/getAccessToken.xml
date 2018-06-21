@@ -2,11 +2,32 @@
     <parameter name="code" description="Full-text search query string."/>
     <sequence>
         <property name="uri.var.code" expression="$func:code"/>
+        <property name="uri.var.client_id" expression="$func:client_id"/>
+        <property name="uri.var.client_secret" expression="$func:client_secret"/>
+        <property name="uri.var.redirect_uri" expression="$func:redirect_uri"/>
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post" uri-template="https://api.medium.com/v1/tokens" />
             </endpoint>
+            <payloadFactory media-type="json">
+                <format>
+                    {
+                    "code":$1,
+                    "client_id":$2,
+                    "client_secret":$3,
+                    "grant_type":"authorization_code",
+                    "redirect_uri":$4
+                    }
+                </format>
+                <args>
+                    <arg expression="uri.var.code" evaluator="json"/>
+                    <arg expression="uri.var.client_id" evaluator="json"/>
+                    <arg expression="uri.var.client_secret" evaluator="json"/>
+                    <arg expression="uri.var.redirect_uri" evaluator="json"/>
+                </args>
+            </payloadFactory>
+            <property name="messageType" value="application/json" scope="axis2"/>
         </call>
     </sequence>
 </template>
