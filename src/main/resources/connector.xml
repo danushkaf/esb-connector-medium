@@ -19,11 +19,11 @@
 <connector>
     <component name="googlebooks" package="org.wso2.carbon.esb.connector" >
         <dependency component="getAuthenticatedUser"/>
-        <description>WSO2 GoogleBooks connector library</description>
+        <description>WSO2 Medium connector library</description>
     </component>
     <component name="googlebooks" package="org.wso2.carbon.esb.connector" >
         <dependency component="getAccessToken"/>
-        <description>WSO2 GoogleBooks connector library</description>
+        <description>WSO2 Medium connector library</description>
     </component>
     <icon>icon/icon-small.gif</icon>
 </connector>
