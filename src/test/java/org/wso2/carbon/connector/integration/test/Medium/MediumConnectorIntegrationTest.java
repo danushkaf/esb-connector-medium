@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.carbon.connector.integration.test.GoogleBooks;
+package org.wso2.carbon.connector.integration.test.Medium;
 
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * Sample integration test
  */
-public class GoogleBooksConnectorIntegrationTest extends ConnectorIntegrationTestBase {
+public class MediumConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
     private Map<String, String> eiRequestHeadersMap = new HashMap<String, String>();
     private Map<String, String> apiRequestHeadersMap = new HashMap<String, String>();
@@ -45,7 +45,7 @@ public class GoogleBooksConnectorIntegrationTest extends ConnectorIntegrationTes
         eiRequestHeadersMap.put("Content-Type", "application/json");
     }
 
-    @Test(enabled = true, groups = {"wso2.ei"}, description = "GoogleBooks test case")
+    @Test(enabled = true, groups = {"wso2.ei"}, description = "Medium test case")
     public void testSample() throws Exception {
         log.info("Successfully tested");
         RestResponse<JSONObject> eiRestResponse =

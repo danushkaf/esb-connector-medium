@@ -17,7 +17,7 @@
  ~  under the License.
 -->
 
-<proxy xmlns="http://ws.apache.org/ns/synapse" name="Sample"
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="MediumSampleProxy"
        transports="https,http" statistics="disable" trace="disable"
        startOnLoad="true">
     <target>

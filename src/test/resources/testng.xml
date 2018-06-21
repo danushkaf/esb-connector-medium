@@ -25,9 +25,9 @@
         <listener class-name="org.wso2.carbon.automation.engine.testlisteners.TestManagerListener"/>
         <listener class-name="org.wso2.carbon.automation.engine.testlisteners.TestReportListener"/>
     </listeners>
-    <test name="GoogleBooks-Connector-Test" preserve-order="true" verbose="2">
+    <test name="Medium-Connector-Test" preserve-order="true" verbose="2">
         <classes>
-            <class name="org.wso2.carbon.connector.integration.test.GoogleBooksConnectorIntegrationTest"/>
+            <class name="org.wso2.carbon.connector.integration.test.Medium.MediumConnectorIntegrationTest"/>
         </classes>
     </test>
 </suite>

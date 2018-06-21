@@ -1,1 +1,1 @@
-﻿Product: Integration tests for WSO2 ESB GoogleBooks connector
+﻿Product: Integration tests for WSO2 ESB Medium connector

@@ -17,11 +17,11 @@
    under the License.
 -->
 <connector>
-    <component name="googlebooks" package="org.wso2.carbon.esb.connector" >
+    <component name="medium" package="org.wso2.carbon.esb.connector" >
         <dependency component="getAuthenticatedUser"/>
         <description>WSO2 Medium connector library</description>
     </component>
-    <component name="googlebooks" package="org.wso2.carbon.esb.connector" >
+    <component name="medium" package="org.wso2.carbon.esb.connector" >
         <dependency component="getAccessToken"/>
         <description>WSO2 Medium connector library</description>
     </component>

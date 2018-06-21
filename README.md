@@ -1,1 +1,1 @@
-# medium-connector
+# esb-connector-medium
