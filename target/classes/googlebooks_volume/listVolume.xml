@@ -1,0 +1,15 @@
+<template name="listVolume" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="searchQuery" description="Full-text search query string."/>
+    <sequence>
+        <property name="uri.var.searchQuery" expression="$func:searchQuery"/>
+        <header name="Accept" value="utf-8" scope="transport"/>
+        <header name="Accept-Charset" value="image/jpeg" scope="transport"/>
+        <header name="Content-Type" value="application/json" scope="transport"/>
+        <header name="Authorization" value="Bearer {uri.var.searchQuery}" scope="transport"/>
+        <call>
+            <endpoint>
+                <http method="get" uri-template="https://api.medium.com/v1/me" />
+            </endpoint>
+        </call>
+    </sequence>
+</template>
