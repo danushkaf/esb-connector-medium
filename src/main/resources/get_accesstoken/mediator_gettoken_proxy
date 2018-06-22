@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="medium_getAccessToken"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+   <target>
+      <inSequence>
+         <property expression="json-eval($.code)" name="code"/>
+         <property expression="json-eval($.client_id)" name="client_id"/>
+         <property expression="json-eval($.client_secret)" name="client_secret"/>
+         <property expression="json-eval($.redirect_uri)" name="redirect_uri"/>
+         <payloadFactory media-type="text">
+            <format>code=$1&amp;client_id=$2&amp;client_secret=$3&amp;grant_type=authorization_code&amp;redirect_uri=$4
+            </format>
+            <args>
+               <arg evaluator="xml" expression="get-property('code')"/>
+               <arg evaluator="xml" expression="get-property('client_id')"/>
+               <arg evaluator="xml" expression="get-property('client_secret')"/>
+               <arg evaluator="xml" expression="get-property('redirect_uri')"/>
+            </args>
+         </payloadFactory>
+         <header name="Content-Type"
+                 scope="transport"
+                 value="application/x-www-form-urlencoded"/>
+         <call>
+            <endpoint>
+               <http method="POST" uri-template="https://api.medium.com/v1/tokens"/>
+            </endpoint>
+         </call>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <log/>
+         <send/>
+      </outSequence>
+   </target>
+   <description/>
+</proxy>
