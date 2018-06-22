@@ -18,11 +18,8 @@
 -->
 <connector>
     <component name="medium" package="org.wso2.carbon.esb.connector" >
-        <dependency component="getAuthenticatedUser"/>
-        <description>WSO2 Medium connector library</description>
-    </component>
-    <component name="medium" package="org.wso2.carbon.esb.connector" >
-        <dependency component="getAccessToken"/>
+        <dependency component="user_authenticate"/>
+        <dependency component="get_accesstoken"/>
         <description>WSO2 Medium connector library</description>
     </component>
     <icon>icon/icon-small.gif</icon>

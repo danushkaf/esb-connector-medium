@@ -2,7 +2,7 @@
 <component name="get_accesstoken" type="synapse/template">
     <subComponents>
         <component name="getAccessToken">
-            <file>getAuthenticatedUser.xml</file>
+            <file>getAccessToken.xml</file>
             <description>Used to get long-lived access token with which you can make authenticated requests on behalf of the user.</description>
         </component>
     </subComponents>
