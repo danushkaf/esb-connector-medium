@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="list_publications" type="synapse/template">
+    <subComponents>
+        <component name="getPublicationLists">
+            <file>getPublicationLists.xml</file>
+            <description>Listing the user’s publications.</description>
+        </component>
+    </subComponents>
+</component>
