@@ -5,5 +5,9 @@
             <file>getPublicationLists.xml</file>
             <description>Listing the user’s publications.</description>
         </component>
+        <component name="getContributorLists">
+            <file>getContributorLists.xml</file>
+            <description>Listing the publication's contributors.</description>
+        </component>
     </subComponents>
 </component>
