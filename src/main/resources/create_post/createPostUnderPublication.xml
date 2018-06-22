@@ -1,0 +1,39 @@
+<template name="createPostUnderPublication" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="publicationId" description="Publication Id"/>
+    <parameter name="access_token" description="Full-text search query string."/>
+    <sequence>
+        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <header name="Accept" value="utf-8" scope="transport"/>
+        <header name="Accept-Charset" value="utf-8" scope="transport"/>
+        <header name="Content-Type" value="application/json" scope="transport"/>
+        <header name="Authorization" value="Bearer {uri.var.access_token}" scope="transport"/>
+        <property expression="json-eval($.title)" name="title"/>
+        <property expression="json-eval($.contentFormat)" name="contentFormat"/>
+        <property expression="json-eval($.content)" name="content"/>
+        <property expression="json-eval($.tags)" name="tags"/>
+        <property expression="json-eval($.publishStatus)" name="publishStatus"/>
+        <payloadFactory media-type="json">
+            <format>{
+                "title": $1,
+                "contentFormat": $2,
+                "content": $3,
+                "tags": $4,
+                "publishStatus": $5
+                }
+            </format>
+            <args>
+                <arg evaluator="json" expression="get-property('title')"/>
+                <arg evaluator="json" expression="get-property('contentFormat')"/>
+                <arg evaluator="json" expression="get-property('content')"/>
+                <arg evaluator="json" expression="get-property('tags')"/>
+                <arg evaluator="json" expression="get-property('publishStatus')"/>
+            </args>
+        </payloadFactory>
+        <call>
+            <endpoint>
+                <http method="POST" uri-template="https://api.medium.com/v1/publications/{publicationId}/posts"/>
+            </endpoint>
+        </call>
+        <respond/>
+    </sequence>
+</template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="create_post" type="synapse/template">
+    <subComponents>
+        <component name="createPost">
+            <file>createPost.xml</file>
+            <description>Creates a post on the authenticated user’s profile.</description>
+        </component>
+        <component name="createPostUnderPublication">
+            <file>createPostUnderPublication.xml</file>
+            <description>Creating a post and associating it with a publication on Medium.</description>
+        </component>
+    </subComponents>
+</component>
