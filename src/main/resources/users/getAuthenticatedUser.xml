@@ -1,11 +1,11 @@
 <template name="getAuthenticatedUser" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="access_token" description="Full-text search query string."/>
     <sequence>
-        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <property name="access_token" expression="$func:access_token"/>
         <header name="Accept" value="utf-8" scope="transport"/>
         <header name="Accept-Charset" value="utf-8" scope="transport"/>
         <header name="Content-Type" value="application/json" scope="transport"/>
-        <header name="Authorization" value="Bearer {uri.var.access_token}" scope="transport"/>
+        <header name="Authorization" value="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
         <call>
             <endpoint>
                 <http method="get" uri-template="https://api.medium.com/v1/me" />

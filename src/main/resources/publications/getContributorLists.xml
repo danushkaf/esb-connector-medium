@@ -1,15 +1,15 @@
 <template name="getContributorLists" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="publicationId" description="publication id for the authenticated user."/>
     <sequence>
-        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <property name="access_token" expression="$func:access_token"/>
         <property name="uri.var.publicationId" expression="$func:publicationId"/>
         <header name="Accept" value="utf-8" scope="transport"/>
         <header name="Accept-Charset" value="utf-8" scope="transport"/>
         <header name="Content-Type" value="application/json" scope="transport"/>
-        <header name="Authorization" value="Bearer {uri.var.access_token}" scope="transport"/>
+        <header name="Authorization" value="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
         <call>
             <endpoint>
-                <http method="get" uri-template="https://api.medium.com/v1/publications/{publicationId}/contributors" />
+                <http method="get" uri-template="https://api.medium.com/v1/publications/{uri.var.publicationId}/contributors" />
             </endpoint>
         </call>
     </sequence>
