@@ -1,12 +1,12 @@
 <template name="getPublicationLists" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userId" description="user id for yhe authenticated user."/>
+    <parameter name="userId" description="user id for the authenticated user."/>
     <sequence>
         <property name="access_token" expression="$func:access_token"/>
         <property name="uri.var.userId" expression="$func:userId"/>
         <header name="Accept" value="utf-8" scope="transport"/>
         <header name="Accept-Charset" value="utf-8" scope="transport"/>
         <header name="Content-Type" value="application/json" scope="transport"/>
-        <header name="Authorization" value="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
+        <header name="Authorization" expression="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
         <call>
             <endpoint>
                 <http method="get" uri-template="https://api.medium.com/v1/users/{uri.var.userId}/publications" />

@@ -1,21 +1,13 @@
 <template name="createPostUnderPublication" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="publicationId" description="Publication Id"/>
-    <parameter name="access_token" description="Full-text search query string."/>
+    <parameter name="publicationId" description="Publication Id for the post to be under"/>
+    <parameter name="access_token" description="Valid Access Token."/>
     <sequence>
-        <property expression="json-eval($.access_token)"
-                  name="access_token"
-                  scope="default"
-                  type="STRING"/>
-        <property expression="json-eval($.publicationId)"
-                  name="uri.var.publicationId"
-                  scope="default"
-                  type="STRING"/>
+        <property expression="json-eval($.access_token)" name="access_token" scope="default" type="STRING"/>
+        <property expression="json-eval($.publicationId)" name="uri.var.publicationId" scope="default" type="STRING"/>
         <header name="Accept" scope="transport" value="utf-8"/>
         <header name="Accept-Charset" scope="transport" value="utf-8"/>
         <header name="Content-Type" scope="transport" value="application/json"/>
-        <header expression="fn:concat('Bearer ', get-property('access_token'))"
-                name="Authorization"
-                scope="transport"/>
+        <header name="Authorization" expression="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
         <property expression="json-eval($.title)" name="title"/>
         <property expression="json-eval($.contentFormat)" name="contentFormat"/>
         <property expression="json-eval($.content)" name="content"/>
