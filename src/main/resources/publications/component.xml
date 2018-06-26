@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="publications" type="synapse/template">
     <subComponents>
-        <component name="getPublicationLists">
-            <file>getPublicationLists.xml</file>
+        <component name="getPublicationsList">
+            <file>getPublicationsList.xml</file>
             <description>Listing the user’s publications.</description>
         </component>
-        <component name="getContributorLists">
-            <file>getContributorLists.xml</file>
+        <component name="getContributorsList">
+            <file>getContributorsList.xml</file>
             <description>Listing the publication's contributors.</description>
         </component>
     </subComponents>

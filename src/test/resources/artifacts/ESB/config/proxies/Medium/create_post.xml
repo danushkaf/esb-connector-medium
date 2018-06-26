@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="medium_create_post"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+    <target>
+        <inSequence>
+            <property expression="json-eval($.access_token)"
+                      name="access_token"
+                      scope="default"
+                      type="STRING"/>
+            <property expression="json-eval($.authorId)"
+                      name="authorid"
+                      scope="default"
+                      type="STRING"/>
+            <medium.createPost>
+                <access_token>{$ctx:access_token}</access_token>
+                <authorId>{$ctx:authorid}</authorId>
+            </medium.createPost>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>
