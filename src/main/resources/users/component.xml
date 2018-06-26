@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="user_authenticate" type="synapse/template">
+<component name="users" type="synapse/template">
     <subComponents>
         <component name="getAuthenticatedUser">
             <file>getAuthenticatedUser.xml</file>

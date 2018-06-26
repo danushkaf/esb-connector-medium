@@ -18,10 +18,9 @@
 -->
 <connector>
     <component name="medium" package="org.wso2.carbon.esb.connector" >
-        <dependency component="user_authenticate"/>
-        <dependency component="get_accesstoken"/>
-        <dependency component="list_publications"/>
-        <dependency component="create_post"/>
+        <dependency component="users"/>
+        <dependency component="publications"/>
+        <dependency component="posts"/>
         <description>WSO2 Medium connector library</description>
     </component>
     <icon>icon/icon-small.gif</icon>
