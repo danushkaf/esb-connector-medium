@@ -1,4 +1,4 @@
-<template name="getAuthenticatedUser" xmlns="http://ws.apache.org/ns/synapse">
+<template name="getMe" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="access_token" description="Full-text search query string."/>
     <sequence>
         <property name="access_token" expression="$func:access_token"/>
