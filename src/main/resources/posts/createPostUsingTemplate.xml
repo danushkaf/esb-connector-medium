@@ -1,4 +1,4 @@
-<template name="createPost" xmlns="http://ws.apache.org/ns/synapse">
+<template name="createPostUsingTemplate" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="authorId" description="Author id for the post"/>
     <parameter name="access_token" description="Valid Access Token."/>
     <parameter name="title" description="Title of the Post" />
@@ -14,9 +14,9 @@
         <header name="Accept-Charset" scope="transport" value="utf-8"/>
         <header name="Content-Type" scope="transport" value="application/json"/>
         <header name="Authorization" expression="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
+        <class name="org.wso2.carbon.connector.Medium.MediumPostTemplateConnector"/>
         <property expression="json-eval($.title)" name="title"/>
         <property expression="json-eval($.contentFormat)" name="contentFormat"/>
-        <property expression="json-eval($.content)" name="content"/>
         <property expression="json-eval($.canonicalUrl)" name="canonicalUrl"/>
         <property expression="json-eval($.tags)" name="tags"/>
         <property expression="json-eval($.publishStatus)" name="publishStatus"/>

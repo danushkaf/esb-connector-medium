@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <proxy xmlns="http://ws.apache.org/ns/synapse"
-       name="medium_create_post"
+       name="medium_create_post_using_template"
        startOnLoad="true"
        statistics="disable"
        trace="disable"
@@ -23,8 +23,12 @@
                       name="contentFormat"
                       scope="default"
                       type="STRING"/>
-            <property expression="json-eval($.content)"
-                      name="content"
+            <property expression="json-eval($.post_type)"
+                      name="post_type"
+                      scope="default"
+                      type="STRING"/>
+            <property expression="json-eval($.param_list)"
+                      name="param_list"
                       scope="default"
                       type="STRING"/>
             <property expression="json-eval($.canonicalUrl)"
@@ -40,11 +44,13 @@
                       scope="default"
                       type="STRING"/>
             <medium.createPost>
+            <medium.createPost>
                 <access_token>{$ctx:access_token}</access_token>
                 <authorId>{$ctx:authorid}</authorId>
                 <title>{$ctx:title}</title>
                 <contentFormat>{$ctx:contentFormat}</contentFormat>
-                <content>{$ctx:content}</content>
+                <post_type>{$ctx:post_type}</post_type>
+                <param_list>{$ctx:param_list}</param_list>
                 <canonicalUrl>{$ctx:canonicalUrl}</canonicalUrl>
                 <tags>{$ctx:tags}</tags>
                 <publishStatus>{$ctx:publishStatus}</publishStatus>

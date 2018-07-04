@@ -17,7 +17,7 @@
  ~  under the License.
 -->
 <proxy xmlns="http://ws.apache.org/ns/synapse"
-       name="medium_create_post_publication"
+       name="medium_create_post_publication_using_template"
        startOnLoad="true"
        statistics="disable"
        trace="disable"
@@ -40,8 +40,12 @@
                   name="contentFormat"
                   scope="default"
                   type="STRING"/>
-        <property expression="json-eval($.content)"
-                  name="content"
+        <property expression="json-eval($.post_type)"
+                  name="post_type"
+                  scope="default"
+                  type="STRING"/>
+        <property expression="json-eval($.param_list)"
+                  name="param_list"
                   scope="default"
                   type="STRING"/>
         <property expression="json-eval($.canonicalUrl)"
@@ -56,12 +60,14 @@
                   name="publishStatus"
                   scope="default"
                   type="STRING"/>
+        <medium.createPost>
         <medium.createPostUnderPublication>
             <access_token>{$ctx:access_token}</access_token>
             <publicationId>{$ctx:publicationId}</publicationId>
             <title>{$ctx:title}</title>
             <contentFormat>{$ctx:contentFormat}</contentFormat>
-            <content>{$ctx:content}</content>
+            <post_type>{$ctx:post_type}</post_type>
+            <param_list>{$ctx:param_list}</param_list>
             <canonicalUrl>{$ctx:canonicalUrl}</canonicalUrl>
             <tags>{$ctx:tags}</tags>
             <publishStatus>{$ctx:publishStatus}</publishStatus>

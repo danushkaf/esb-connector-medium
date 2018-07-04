@@ -5,9 +5,17 @@
             <file>createPost.xml</file>
             <description>Creates a post on the authenticated user’s profile.</description>
         </component>
+        <component name="createPostUsingTemplate">
+            <file>createPostUsingTemplate.xml</file>
+            <description>Creates a post on the authenticated user’s profile using a predefined template.</description>
+        </component>
         <component name="createPostUnderPublication">
             <file>createPostUnderPublication.xml</file>
             <description>Creating a post and associating it with a publication on Medium.</description>
+        </component>
+        <component name="createPostUnderPublicationUsingTemplate">
+            <file>createPostUnderPublicationUsingTemplate.xml</file>
+            <description>Creating a post and associating it with a publication on Medium using a predefined template.</description>
         </component>
     </subComponents>
 </component>

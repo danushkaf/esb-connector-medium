@@ -1,5 +1,5 @@
-<template name="createPost" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="authorId" description="Author id for the post"/>
+<template name="createPostUnderPublicationUsingTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="publicationId" description="Publication Id for the post to be under"/>
     <parameter name="access_token" description="Valid Access Token."/>
     <parameter name="title" description="Title of the Post" />
     <parameter name="contentFormat" description="Content format of the Post" />
@@ -9,27 +9,23 @@
     <parameter name="publishStatus" description="Publish status that need to be set for the Post" />
     <sequence>
         <property expression="json-eval($.access_token)" name="access_token" scope="default" type="STRING"/>
-        <property expression="json-eval($.authorId)" name="uri.var.authorid" scope="default" type="STRING"/>
+        <property expression="json-eval($.publicationId)" name="uri.var.publicationId" scope="default" type="STRING"/>
         <header name="Accept" scope="transport" value="utf-8"/>
         <header name="Accept-Charset" scope="transport" value="utf-8"/>
         <header name="Content-Type" scope="transport" value="application/json"/>
         <header name="Authorization" expression="fn:concat('Bearer ', get-property('access_token'))" scope="transport"/>
+        <class name="org.wso2.carbon.connector.Medium.MediumPostTemplateConnector"/>
         <property expression="json-eval($.title)" name="title"/>
         <property expression="json-eval($.contentFormat)" name="contentFormat"/>
-        <property expression="json-eval($.content)" name="content"/>
-        <property expression="json-eval($.canonicalUrl)" name="canonicalUrl"/>
         <property expression="json-eval($.tags)" name="tags"/>
         <property expression="json-eval($.publishStatus)" name="publishStatus"/>
         <log level="full"/>
         <payloadFactory media-type="json">
-            <format>{"title": "$1","contentFormat": "$2","content": "$3","canonicalUrl": "$4","tags":
-                $5,"publishStatus": "$6"}
-            </format>
+            <format>{ "title": "$1","contentFormat": "$2","content": "$3","tags": $4,"publishStatus": "$5"}</format>
             <args>
                 <arg evaluator="xml" expression="get-property('title')"/>
                 <arg evaluator="xml" expression="get-property('contentFormat')"/>
                 <arg evaluator="xml" expression="get-property('content')"/>
-                <arg evaluator="xml" expression="get-property('canonicalUrl')"/>
                 <arg evaluator="xml" expression="get-property('tags')"/>
                 <arg evaluator="xml" expression="get-property('publishStatus')"/>
             </args>
@@ -37,7 +33,7 @@
         <call>
             <endpoint>
                 <http method="POST"
-                      uri-template="https://api.medium.com/v1/users/{uri.var.authorid}/posts"/>
+                      uri-template="https://api.medium.com/v1/publications/{uri.var.publicationId}/posts"/>
             </endpoint>
         </call>
     </sequence>

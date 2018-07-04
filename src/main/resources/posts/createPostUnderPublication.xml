@@ -1,6 +1,12 @@
 <template name="createPostUnderPublication" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="publicationId" description="Publication Id for the post to be under"/>
     <parameter name="access_token" description="Valid Access Token."/>
+    <parameter name="title" description="Title of the Post" />
+    <parameter name="contentFormat" description="Content format of the Post" />
+    <parameter name="content" description="Content of the Post" />
+    <parameter name="canonicalUrl" description="Canonical URL for the Post" />
+    <parameter name="tags" description="Tags needs to be added to the Post" />
+    <parameter name="publishStatus" description="Publish status that need to be set for the Post" />
     <sequence>
         <property expression="json-eval($.access_token)" name="access_token" scope="default" type="STRING"/>
         <property expression="json-eval($.publicationId)" name="uri.var.publicationId" scope="default" type="STRING"/>
@@ -30,6 +36,5 @@
                       uri-template="https://api.medium.com/v1/publications/{uri.var.publicationId}/posts"/>
             </endpoint>
         </call>
-        <respond/>
     </sequence>
 </template>
